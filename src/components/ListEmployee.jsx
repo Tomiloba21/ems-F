@@ -48,6 +48,11 @@ export const ListEmployee = () => {
         
     }
 
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
+    };
 
 
 
@@ -57,7 +62,7 @@ export const ListEmployee = () => {
 
 
   return (
-    <div className='container-xl ' style={{maxHeight:"50%"}}>
+    <div className='container ' style={{maxHeight:"50%" }}>
          <h1 className='text-center' style={{margin:'50px'}}> List of Employee</h1>
 
          <button 
@@ -74,13 +79,8 @@ export const ListEmployee = () => {
                     <th scope='col'  style={{ width: '5%' }} > Id</th>
                     <th scope='col'  style={{ width: '15%' }}> First Name</th>
                     <th scope='col'  style={{ width: '15%' }}> Last Name</th>
-                    <th scope='col'  style={{ width: '40%' }}> Email</th>
-                    <th scope='col'  style={{ width: '25%' }}>
-                        <div>
-                            Actions
-
-                        </div>
-                    </th>
+                    <th id='seed' scope='col'  style={{ width: '40%' }}> Email</th>
+                    <th scope='col'  style={{ width: '25%' }}>Actions</th>
     
                </tr>
             </thead>
@@ -91,14 +91,31 @@ export const ListEmployee = () => {
                         <th scope='row'  style={{ width: '5%' }}>{employee.id}</th>
                         <td  style={{ width: '15%' }} >{employee.firstName}</td>
                         <td  style={{ width: '15%' }} >{employee.lastName}</td>
-                        <td  style={{ width: '40%' }}  >{employee.email}</td>
+                        <td  id='seed' style={{ width: '40%' }}  >{employee.email}</td>
                         <td style={{ width: '25%' }}  >
-                        <div className='row '>
+                        
+                        
+                        <div class="btn-group dropstart">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <button   onClick={()=> updateEmployee(employee.id)} className='col btn btn-success  dropdown-item' >Update</button>
+                            </li>
+                            <li>
+                                <button onClick={()=> deleteEmployeeById(employee.id)} className='col btn btn-success dropdown-item'  >Delete</button>
+
+                            </li>
+                        </ul>
+                        </div>
+                                                
+                        {/* <div >
                         <button  onClick={()=> updateEmployee(employee.id)} className='col btn btn-success' style={{margin:"10px 15px  0px"}}>Update</button>
                         <button onClick={()=> deleteEmployeeById(employee.id)} className='col btn btn-success' style={{margin:"10px 15px 0px "}} >Delete</button>
                         
 
-                        </div>
+                        </div> */}
 
                         </td>
                     </tr>

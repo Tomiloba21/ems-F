@@ -6,7 +6,7 @@ const HeaderComponent = () => {
 
         <header>
             <nav className="navbar navbar-dark bg-dark">
-                <a className="navbar-brand text-center " style={{marginLeft:"100px"}} href="#">Employee Management System</a> 
+                <a className="navbar-brand" style={{marginLeft:"10%"}} href="#">Employee Management System</a> 
 
             </nav>
         </header>
